@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Ractive-Firebase-CRUD</title>
+    <meta charset="utf-8">
+    <script id='template' type='text/ractive'>
+         
+        <input type='text' id='nameInput' placeholder='name' value='{{nameInput}}' > 
+        <input type='text' id='addressInput' placeholder='address' value='{{addressInput}}'>
+        <input type='text' id='telInput' placeholder='tel' value='{{telInput}}'>
+        <input type='text' id='openHourInput' placeholder='openHour' value='{{openHourInput}}'>                    
+        <button on-click='{{status}}:{{this}},{{statuskey}}'>{{status}}</button>
+      
+        <table>
+            <tr>
+        	    <th>店名</th>
+        	    <th>地址</th>
+        	    <th>電話</th>
+        	    <th>營業時間</th>
+    	    </tr>
+     	    {{#each tainan}}
+    	        <tr>        
+            	    <td>{{name}}</td>
+            	    <td>{{address}}</td>
+            	    <td>{{tel}}</td>
+            	    <td>{{openHour}}</td>
+                    <td><button on-click='delete:{{this}},{{key}}'>delete</button></td>
+                    <td><button on-click='edit:{{this}},{{key}}'>edit</button></td>
+    	        </tr>                
+            {{/each}}
+    
+        </table>
+
+    </script>
+</head>
+<body>     
+    <div id='tainanData'>
+    </div>
+
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+    <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+    <script src='http://cdn.ractivejs.org/latest/ractive.min.js'></script>
+    <script src="food.js"></script>
+</body>
+</html>
